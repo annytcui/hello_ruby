@@ -22,8 +22,39 @@ def EvenlyDivisible(x, y)
 end
 
 puts EvenlyDivisible(1, 20)
-
 =end
 
 # Solution #2
-puts [*1..20].reduce(:lcm)
+# From the perspective of prime factorization
+
+def EvenlyDivisible(x, y)
+  factors = Hash.new(0)
+  (x..y).each do |i|
+    n = 2
+    while n <= i**0.5
+      while i % n == 0
+        i /= n
+        factors[n] += 1
+      end
+      n += 1
+    end
+    if i != 1
+      factors[i] += 1
+    end
+  end
+
+  lcm = 1
+  factors.keys.each do |key|
+    p = 1
+    while key ** p <= y
+      p += 1
+    end
+    lcm *= (key ** (p - 1))
+  end
+  puts lcm
+end
+
+puts EvenlyDivisible(1, 20)
+
+# Solution #3
+# puts [*1..20].reduce(:lcm)
