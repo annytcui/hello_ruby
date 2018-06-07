@@ -1,3 +1,4 @@
+# Project Euler Problem 18
 matrix = [
   [75],
   [95, 64],
@@ -27,11 +28,5 @@ while a > 1
   a -= 1
 end
 
-longest_path = matrix[0][0]
-if matrix[1][0] >= matrix[1][1]
-  longest_path += matrix[1][0]
-else
-  longest_path += matrix[1][1]
-end
-
+longest_path = matrix[0][0] += [matrix[1][0], matrix[1][1]].max
 puts longest_path
