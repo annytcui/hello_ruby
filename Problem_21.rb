@@ -1,5 +1,7 @@
 # Evaluate the sum of all the amicable numbers under 10000.
 
+
+# Solution #1
 require 'prime'
 divisors = {}
 (2..9999).each do |num|
@@ -26,3 +28,28 @@ while divisors.length >= 2
 end
 
 puts amicables_sum
+
+=begin
+# Solution #2
+class Integer
+  def divisors_sum
+    sum = 1
+
+    (2..Math.sqrt(self)).each do |i|
+      sum += i + (self / i) if self % i == 0
+    end
+    sum
+  end
+end
+
+sum = 0
+
+(2..9999).each do |n|
+  s = n.divisors_sum
+  if s != n && s.divisors_sum == n
+    sum += n
+  end
+end
+
+puts sum
+=end
