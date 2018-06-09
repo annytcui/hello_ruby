@@ -1,7 +1,8 @@
 # What is the index of the first term in the Fibonacci sequence to contain 1000 digits?
-
+=begin
+# Solution #1
 def digits(number)
-  number.to_s.split("").length
+  number.to_s.length
 end
 
 sequence = { 1 => 1, 2 => 1}
@@ -13,3 +14,15 @@ end
 
 puts i
 puts sequence[i]
+=end
+
+# Solution #2
+index = 1
+a = 1
+b = 1
+while a.to_s.length < 1000
+  index += 1
+  a, b = b, a + b
+end
+
+puts index
