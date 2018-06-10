@@ -3,6 +3,7 @@
 #   where |n| is the modulus/absolute value of n
 # Find the product of the coefficients, a and b, for the quadratic expression that produces the maximum number of primes for consecutive values of n, starting with n = 0.
 
+# Solution #1
 def is_prime?(number)
   return false if number <= 1
 
@@ -30,3 +31,21 @@ a, b = 0, 0
 end
 
 puts max, a*b
+
+=begin
+# Solution #2
+require 'mathn'
+
+max = 0
+product = 0
+
+(-999..999).each do |a|
+  (1..1000).each do |b|
+    n = 0
+    n += 1 until !(n**2 + a*n +b).prime?
+    max, product = n, a*b if n > max
+  end
+end
+
+puts max, product
+=end
