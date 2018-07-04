@@ -14,7 +14,7 @@ count = 0
   bool = true
   (0..index).each do |j|
     num = n.to_s.split(//).rotate(j).join.to_i
-    if not is_prime?(num)
+    if (!is_prime?(num))
       bool = false
       break
     end
